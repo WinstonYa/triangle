@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>三角形</title>
+  </head>
+  <style>
+    /*想获取朝那边三角形,给相反的一边设置颜色,font-size: 0;line-height: 0;可以兼容ie6*/
+    .up {
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 20px solid #f00;
+      font-size: 0;
+      line-height: 0;
+    }
+    .down {
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #f00;
+      font-size: 0;
+      line-height: 0;
+    }
+    .left {
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-right: 20px solid #f00;
+      border-bottom: 20px solid transparent;
+      font-size: 0;
+      line-height: 0;
+    }
+    .right {
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-left: 20px solid #f00;
+      border-bottom: 20px solid transparent;
+      font-size: 0;
+      line-height: 0;
+    }
+
+    /* 有边框的三角形 */
+    .border-up {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 30px solid #333;
+      position: relative;
+      margin: 50px auto;
+    }
+    .border-up span {
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 28px solid transparent;
+      border-right: 28px solid transparent;
+      border-bottom: 28px solid #f0981c;
+      position: absolute;
+      left: -28px;
+      top: 1px;
+    }
+    .border-down {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-top: 30px solid #333;
+      position: relative;
+      margin: 50px auto;
+    }
+    .border-down span {
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 28px solid transparent;
+      border-right: 28px solid transparent;
+      border-top: 28px solid #f0981c;
+      position: absolute;
+      left: -28px;
+      top: -29px;
+    }
+    .border-left {
+      width: 0;
+      height: 0;
+      border-bottom: 30px solid transparent;
+      border-right: 30px solid #333;
+      border-top: 30px solid transparent;
+      position: relative;
+      margin: 50px auto;
+    }
+    .border-left span {
+      display: block;
+      width: 0;
+      height: 0;
+      border-bottom: 28px solid transparent;
+      border-right: 28px solid #f0981c;
+      border-top: 28px solid transparent;
+      position: absolute;
+      left: 1px;
+      top: -28px;
+    }
+    .border-right {
+      width: 0;
+      height: 0;
+      border-left: 30px solid #333;
+      border-bottom: 30px solid transparent;
+      border-top: 30px solid transparent;
+      position: relative;
+      margin: 50px auto;
+    }
+    .border-right span {
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 28px solid #f0981c;
+      border-bottom: 28px solid transparent;
+      border-top: 28px solid transparent;
+      position: absolute;
+      left: -29px;
+      top: -28px;
+    }
+
+    /* 空心三角形 */
+    .border-up-empty {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 30px solid #333;
+      position: relative;
+      margin: 50px auto;
+    }
+    .border-up-empty span {
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 28px solid transparent;
+      border-right: 28px solid transparent;
+      border-bottom: 28px solid #f0981c;
+      position: absolute;
+      left: -28px;
+      top: 2px;
+    }
+    .border-down-empty {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-top: 30px solid #333;
+      position: relative;
+      margin: 50px auto;
+    }
+    .border-down-empty span {
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 28px solid transparent;
+      border-right: 28px solid transparent;
+      border-top: 28px solid #f0981c;
+      position: absolute;
+      left: -28px;
+      top: -30px;
+    }
+    .border-left-empty {
+      width: 0;
+      height: 0;
+      border-bottom: 30px solid transparent;
+      border-right: 30px solid #333;
+      border-top: 30px solid transparent;
+      position: relative;
+      margin: 50px auto;
+    }
+    .border-left-empty span {
+      display: block;
+      width: 0;
+      height: 0;
+      border-bottom: 28px solid transparent;
+      border-right: 28px solid #f0981c;
+      border-top: 28px solid transparent;
+      position: absolute;
+      left: 2px;
+      top: -28px;
+    }
+    .border-right-empty {
+      width: 0;
+      height: 0;
+      border-left: 30px solid #333;
+      border-bottom: 30px solid transparent;
+      border-top: 30px solid transparent;
+      position: relative;
+      margin: 50px auto;
+    }
+    .border-right-empty span {
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 28px solid #f0981c;
+      border-bottom: 28px solid transparent;
+      border-top: 28px solid transparent;
+      position: absolute;
+      left: -30px;
+      top: -28px;
+    }
+  </style>
+  <body>
+    <div class="up"></div>
+    <!--向上的三角形-->
+    <div class="down"></div>
+    <!--向下的三角形-->
+    <div class="left"></div>
+    <!--向左的三角形-->
+    <div class="right"></div>
+    <!--向右的三角形-->
+
+    <!--向上的三角形-->
+    <div class="border-up">
+      <span></span>
+    </div>
+    <!--向下的三角形-->
+    <div class="border-down">
+      <span></span>
+    </div>
+    <!--向左的三角形-->
+    <div class="border-left">
+      <span></span>
+    </div>
+    <!--向右的三角形-->
+    <div class="border-right">
+      <span></span>
+    </div>
+
+    <!--空心的三角形-->
+    <!--向上的三角形-->
+    <div class="border-up-empty">
+      <span></span>
+    </div>
+    <!--向下的三角形-->
+    <div class="border-down-empty">
+      <span></span>
+    </div>
+    <!--向左的三角形-->
+    <div class="border-left-empty">
+      <span></span>
+    </div>
+    <!--向右的三角形-->
+    <div class="border-right-empty">
+      <span></span>
+    </div>
+  </body>
+</html>
